@@ -24,13 +24,13 @@ export default function Home() {
       <main>
         {/* About Us section */}
         <Aboutus />
-        
-        {/* Placement and Event sections */}
-        <Placement />
         <Event />
+        <Placement />
+        
+        <News />
+        {/* Placement and Event sections */}
         
         {/* News section */}
-        <News />
         
         {/* Achievements section */}
         <Achieve />

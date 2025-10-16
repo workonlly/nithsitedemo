@@ -13,7 +13,7 @@ function Hero() {
       </div>
 
       {/* Dark gradient overlay - strong from left to right */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#631012]/60 via-[#631012]/40 to-black/50"></div>
+      <div className="absolute inset-0 bg-black opacity-50"></div>
 
       {/* Additional bottom overlay for text protection */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
@@ -35,9 +35,7 @@ function Hero() {
 
           {/* Subtitle with improved visibility */}
           <p className="text-lg md:text-xl mb-8 leading-relaxed max-w-3xl mx-auto drop-shadow-lg">
-            Lorem ipsum dolor sit amet consectetur. Pretium gravida convallis
-            est enim nunc mi elementum auctor. Lectus proin rhoncus viverra amet
-            sagittis est vestibulum urna.
+            To achieve academic excellence in engineering, technology, architecture and science by imparting quality and value based education.
           </p>
 
           {/* Navigation Buttons to Sections */}
@@ -80,7 +78,7 @@ function Hero() {
             </a>
             <a
               href="#news"
-              className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white font-bold py-3 px-8 rounded-lg text-base transition-all duration-300 border-2 border-white/60 drop-shadow-lg inline-flex items-center gap-2"
+              className="bg-[#631012] hover:bg-[#4a0c0e] text-white font-bold py-3 px-8 rounded-lg text-base transition-all duration-300 shadow-xl hover:shadow-2xl drop-shadow-lg inline-flex items-center gap-2"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zm-5.04-6.71l-2.75 3.54h2.5l1.96 2.36h2.5L13.5 12.6l4.96-6.6H16.46l-1.92 2.6-1.92-2.6h-2.5l3.92 5.29z" />
