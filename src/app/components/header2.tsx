@@ -1,7 +1,7 @@
 import React from 'react'
 import './header2.css'
 
-function Header() {
+function Header2() {
   return (
     <header className="w-full">
       {/* Top utility bar */}
@@ -28,8 +28,8 @@ function Header() {
         </div>
       </div>
 
-      {/* Main header with curved design using clip-path */}
-      <div className="relative h-20">
+      {/* Main header with curved design */}
+      <div className="relative h-24">
         {/* Maroon curved section */}
         <div className="absolute inset-0 curved-maroon"></div>
         
@@ -69,4 +69,4 @@ function Header() {
   )
 }
 
-export default Header
+export default Header2
