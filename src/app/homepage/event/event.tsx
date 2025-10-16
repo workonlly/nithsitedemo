@@ -1,26 +1,241 @@
-import React from 'react'
+"use client";
 
-function Event() {
+import React, { useState } from "react";
+import Image from "next/image";
+
+export default function Event() {
+  const baseEvents = [
+    {
+      id: 1,
+      title: "Tech Summit 2025",
+      image: "/admin.jpg",
+      description:
+        "Join us for our annual Tech Summit featuring industry leaders and cutting-edge innovations. This event brings together the brightest minds in technology for networking and knowledge sharing.",
+      date: "Mar 15, 2025",
+      attendees: "500+",
+    },
+    {
+      id: 2,
+      title: "Annual Conference",
+      image: "/direct.jpg",
+      description:
+        "Our flagship annual conference showcasing the latest research and developments. Connect with peers, participate in workshops, and stay updated with industry trends.",
+      date: "Apr 20, 2025",
+      attendees: "800+",
+    },
+    {
+      id: 3,
+      title: "Workshop Series",
+      image: "/direct.jpg",
+      description:
+        "Intensive hands-on workshops designed to enhance your skills. Expert instructors guide you through practical exercises and real-world applications.",
+      date: "May 10, 2025",
+      attendees: "300+",
+    },
+    {
+      id: 4,
+      title: "Networking Event",
+      image: "/admin.jpg",
+      description:
+        "Build meaningful connections with professionals from various fields. Enjoy interactive sessions and collaborative opportunities.",
+      date: "Jun 5, 2025",
+      attendees: "600+",
+    },
+    {
+      id: 5,
+      title: "Innovation Expo",
+      image: "/admin.jpg",
+      description:
+        "Explore innovative projects and groundbreaking research. Showcase your work and discover new possibilities in your field.",
+      date: "Jul 15, 2025",
+      attendees: "1000+",
+    },
+  ];
+
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const selectedEvent = baseEvents[selectedIndex];
+
+  const handlePrev = () => {
+    setSelectedIndex(
+      (prev) => (prev - 1 + baseEvents.length) % baseEvents.length
+    );
+  };
+
+  const handleNext = () => {
+    setSelectedIndex((prev) => (prev + 1) % baseEvents.length);
+  };
+
   return (
     <section className="py-16 px-6 bg-white">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl font-bold text-[#631012] mb-8 border-b-4 border-[#631012] pb-2 inline-block">
+        <h2 className="text-4xl font-bold text-[#631012] mb-12 border-b-4 border-[#631012] pb-2 inline-block">
           Events
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {Array.from({ length: 3 }).map((_, index) => (
-            <div key={index} className="border border-gray-300 rounded-lg p-6 bg-white hover:shadow-lg transition-shadow">
-              <h3 className="text-xl font-semibold text-[#631012] mb-3">Upcoming Event {index + 1}</h3>
-              <p className="text-gray-600 mb-4">
-                Lorem ipsum dolor sit amet consectetur. Event details and description will be displayed here.
-              </p>
-              <div className="text-sm text-gray-500">Date: Coming Soon</div>
+
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-8 py-12 min-h-screen lg:min-h-96">
+          {/* Left Side - Semi-Circular Positioned Thumbnails */}
+          <div className="w-full lg:w-1/4 flex flex-col items-center justify-center relative h-96">
+            <div className="relative w-full h-full">
+              {/* Semi-circular positioned thumbnails */}
+              {baseEvents.map((event, idx) => {
+                const offset =
+                  (idx - selectedIndex + baseEvents.length) % baseEvents.length;
+                const isCenter = offset === 0;
+
+                // Position thumbnails in a semi-circle on the left side
+                const angle =
+                  (offset / baseEvents.length) * Math.PI - Math.PI / 2;
+                const radius = 140;
+                const x = Math.cos(angle) * radius - 60; // Offset to left
+                const y = Math.sin(angle) * radius;
+
+                let opacity = isCenter ? 1 : 0.6;
+                let zIndex = isCenter ? 30 : 20 - offset;
+                const scale = isCenter ? 1 : 0.7;
+
+                // Show all 5 circles, hide none
+                if (offset > baseEvents.length) {
+                  opacity = 0;
+                  zIndex = 0;
+                }
+
+                return (
+                  <div
+                    key={event.id}
+                    onClick={() => setSelectedIndex(idx)}
+                    className="absolute cursor-pointer transition-all duration-300 ease-out"
+                    style={{
+                      transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px)) scale(${scale})`,
+                      top: "50%",
+                      left: "50%",
+                      opacity: opacity,
+                      zIndex: zIndex,
+                    }}
+                  >
+                    <div
+                      className={`relative w-20 h-20 rounded-full overflow-hidden border-4 transition-all duration-300 ${
+                        isCenter
+                          ? "border-[#631012] shadow-lg ring-2 ring-[#631012]/30"
+                          : "border-gray-300 hover:border-[#631012] shadow-md hover:shadow-lg"
+                      }`}
+                    >
+                      <Image
+                        src={event.image}
+                        alt={event.title}
+                        fill
+                        className="object-cover"
+                        sizes="80px"
+                      />
+                    </div>
+                  </div>
+                );
+              })}
             </div>
-          ))}
+
+            {/* Navigation buttons */}
+            <div className="flex gap-3 mt-8 absolute bottom-0">
+              <button
+                onClick={handlePrev}
+                className="w-10 h-10 rounded-full bg-[#631012] text-white font-bold hover:bg-red-900 transition-colors flex items-center justify-center shadow-md"
+              >
+                ↑
+              </button>
+              <button
+                onClick={handleNext}
+                className="w-10 h-10 rounded-full bg-[#631012] text-white font-bold hover:bg-red-900 transition-colors flex items-center justify-center shadow-md"
+              >
+                ↓
+              </button>
+            </div>
+          </div>
+
+          {/* Center - Event Details Box */}
+          <div className="w-full lg:w-1/2 flex items-center justify-center px-4">
+            <div className="bg-gradient-to-br from-white to-gray-50 rounded-3xl border-2 border-[#631012]/30 p-10 shadow-xl max-w-lg w-full">
+              {/* Badge */}
+              <div className="flex items-center gap-2 mb-8">
+                <div className="w-3 h-3 rounded-full bg-[#631012]"></div>
+                <span className="px-4 py-1 bg-[#631012]/10 text-[#631012] text-xs font-bold rounded-full border border-[#631012]/30 uppercase tracking-wider">
+                  Event Details
+                </span>
+              </div>
+
+              {/* Title */}
+              <h3 className="text-4xl font-bold text-[#631012] mb-6 leading-tight">
+                {selectedEvent.title}
+              </h3>
+
+              {/* Date */}
+              <div className="flex items-center gap-3 mb-6 text-gray-700">
+                <div className="w-5 h-5 rounded-full bg-[#631012]/20 flex items-center justify-center">
+                  <svg
+                    className="w-3 h-3 text-[#631012]"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path d="M5.5 13a3.5 3.5 0 01-.369-6.98 4 4 0 117.753-1.3A4.5 4.5 0 1113.5 13H11V9.413l1.293 1.293a1 1 0 001.414-1.414l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13H5.5z" />
+                  </svg>
+                </div>
+                <span className="text-base font-semibold">
+                  {selectedEvent.date}
+                </span>
+              </div>
+
+              {/* Description */}
+              <p className="text-gray-700 leading-relaxed mb-8 text-sm">
+                {selectedEvent.description}
+              </p>
+
+              {/* Divider */}
+              <div className="h-1 bg-gradient-to-r from-[#631012]/30 via-[#631012]/10 to-transparent mb-8 rounded-full"></div>
+
+              {/* Attendees */}
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-xs text-gray-500 font-bold mb-2 uppercase tracking-wider">
+                    Attendees Expected
+                  </p>
+                  <p className="text-3xl font-bold text-[#631012]">
+                    {selectedEvent.attendees}
+                  </p>
+                </div>
+                <button className="px-8 py-4 bg-[#631012] text-white font-bold rounded-xl hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-base">
+                  Register
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Side - Large Circular Image */}
+          <div className="w-full lg:w-1/4 flex flex-col items-center justify-center">
+            <div className="relative group">
+              {/* Main circular image */}
+              <div className="relative w-72 h-72 rounded-full overflow-hidden border-8 border-[#631012] shadow-2xl transform group-hover:scale-105 transition-all duration-300">
+                <Image
+                  src={selectedEvent.image}
+                  alt={selectedEvent.title}
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </div>
+
+              {/* Event number badge */}
+              <div className="absolute -top-4 right-0 w-16 h-16 bg-[#631012] text-white rounded-full flex items-center justify-center font-bold text-2xl shadow-lg border-4 border-white">
+                {selectedIndex + 1}
+              </div>
+            </div>
+
+            {/* Counter text */}
+            <p className="text-center text-gray-600 font-semibold text-sm mt-8">
+              <span className="text-[#631012] font-bold text-lg">
+                {selectedIndex + 1}
+              </span>{" "}
+              / {baseEvents.length}
+            </p>
+          </div>
         </div>
       </div>
     </section>
-  )
+  );
 }
-
-export default Event

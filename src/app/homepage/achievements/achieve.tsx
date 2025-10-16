@@ -1,52 +1,196 @@
-import React from 'react'
+"use client";
+
+import React, { useState } from "react";
+import Image from "next/image";
 
 function Achieve() {
+  const baseAchievements = [
+    {
+      id: 1,
+      title: "Excellence in Research",
+      image: "/admin.jpg",
+      description:
+        "Recognized for groundbreaking research contributions and innovative solutions that advance our field.",
+      category: "Research",
+    },
+    {
+      id: 2,
+      title: "Academic Excellence",
+      image: "/direct.jpg",
+      description:
+        "Outstanding academic performance and commitment to educational excellence.",
+      category: "Academic",
+    },
+    {
+      id: 3,
+      title: "Innovation Award",
+      image: "/window.svg",
+      description:
+        "Pioneering innovative projects that showcase creativity and technical excellence.",
+      category: "Innovation",
+    },
+    {
+      id: 4,
+      title: "Community Service",
+      image: "/glob.svg",
+      description:
+        "Dedicated service and positive impact on the community and society.",
+      category: "Service",
+    },
+    {
+      id: 5,
+      title: "Student Achievement",
+      image: "/admin.jpg",
+      description:
+        "Exceptional performance and dedication to excellence in student endeavors.",
+      category: "Student",
+    },
+  ];
+
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
+  const handlePrev = () => {
+    setSelectedIndex(
+      (prev) => (prev - 1 + baseAchievements.length) % baseAchievements.length
+    );
+  };
+
+  const handleNext = () => {
+    setSelectedIndex((prev) => (prev + 1) % baseAchievements.length);
+  };
+
+  // Get visible cards for carousel
+  const getVisibleCards = () => {
+    const result = [];
+    for (let i = -2; i <= 2; i++) {
+      const idx =
+        (selectedIndex + i + baseAchievements.length) % baseAchievements.length;
+      result.push({
+        achievement: baseAchievements[idx],
+        index: idx,
+        offset: i,
+      });
+    }
+    return result;
+  };
+
+  const visibleCards = getVisibleCards();
+
   return (
     <section className="py-16 px-6 bg-white">
       <div className="max-w-7xl mx-auto">
-        {/* Achievements heading */}
-        <h2 className="text-4xl font-bold text-[#631012] mb-8 border-b-4 border-[#631012] pb-2 inline-block">
+        <h2 className="text-4xl font-bold text-[#631012] mb-12 border-b-4 border-[#631012] pb-2 inline-block">
           Achievements
         </h2>
-        
-        {/* Horizontal scrollable cards */}
-        <div className="overflow-x-auto pb-4">
-          <div className="flex gap-6 min-w-max">
-            {Array.from({ length: 5 }).map((_, index) => (
-              <div key={index} className="flex-shrink-0 w-80 border-2 border-gray-300 rounded-lg p-6 bg-white hover:shadow-lg transition-shadow">
-                {/* Trophy icon */}
-                <div className="flex justify-center mb-6">
-                  <div className="w-20 h-20 bg-[#631012] rounded-full flex items-center justify-center">
-                    <svg className="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M7 3V1a1 1 0 0 1 2 0v2h6V1a1 1 0 0 1 2 0v2h1a2 2 0 0 1 2 2v2H4V5a2 2 0 0 1 2-2h1zM4 9h16v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9zm8 6a1 1 0 0 1-1-1v-2a1 1 0 0 1 2 0v2a1 1 0 0 1-1 1z"/>
-                      <path d="M12 2a7 7 0 0 1 7 7v1h-2V9a5 5 0 0 0-10 0v1H5V9a7 7 0 0 1 7-7z"/>
-                      <path fillRule="evenodd" d="M7.5 14.5A1.5 1.5 0 0 1 9 13h6a1.5 1.5 0 0 1 1.5 1.5v3A1.5 1.5 0 0 1 15 19H9a1.5 1.5 0 0 1-1.5-1.5v-3zm6-7A2.5 2.5 0 0 0 11 10h2a2.5 2.5 0 0 0-2.5-2.5z"/>
-                    </svg>
-                  </div>
-                </div>
-                
-                {/* Title */}
-                <h3 className="text-2xl font-bold text-[#631012] text-center mb-4">Title</h3>
-                
-                {/* Description */}
-                <p className="text-gray-600 text-sm leading-relaxed text-center">
-                  Lorem ipsum dolor sit amet consectetur. In sed odio ultrices 
-                  tellus vel vel sed in. Elementum sagittis dictumst nibh amet 
-                  sed odio. Nunc gravida convallis porttitor commodo morbi 
-                  amet potenti. Augue purus vitae vitae neque eget vitae.
-                </p>
+
+        {/* Carousel with navigation buttons */}
+        <div className="flex items-center gap-8">
+          {/* Left navigation button */}
+          <button
+            onClick={handlePrev}
+            className="flex-shrink-0 w-12 h-12 rounded-full bg-[#631012] text-white font-bold text-xl hover:bg-red-900 transition-all duration-300 flex items-center justify-center shadow-lg hover:shadow-xl transform hover:scale-110"
+          >
+            ←
+          </button>
+
+          {/* Carousel container */}
+          <div className="flex-1 overflow-hidden">
+            <div className="relative h-100 flex items-center justify-center">
+              {/* Scrollable cards container */}
+              <div className="relative w-full h-full flex items-center justify-center perspective">
+                {visibleCards.map(({ achievement, index, offset }) => {
+                  const isCenter = offset === 0;
+                  let scale = 0.7;
+                  let opacity = 0.4;
+                  let zIndex = 10 + offset;
+
+                  if (offset === -1 || offset === 1) {
+                    scale = 0.85;
+                    opacity = 0.7;
+                    zIndex = 20;
+                  } else if (isCenter) {
+                    scale = 1;
+                    opacity = 1;
+                    zIndex = 30;
+                  }
+
+                  return (
+                    <div
+                      key={achievement.id}
+                      onClick={() => setSelectedIndex(index)}
+                      className="absolute cursor-pointer transition-all duration-500 ease-out"
+                      style={{
+                        transform: `translateX(${offset * 280}px) scale(${scale})`,
+                        opacity: opacity,
+                        zIndex: zIndex,
+                      }}
+                    >
+                      {/* Card */}
+                      <div
+                        className={`w-72 bg-white rounded-xl overflow-hidden border-2 transition-all duration-300 ${
+                          isCenter
+                            ? "border-[#631012] shadow-xl"
+                            : "border-gray-200 shadow-md hover:shadow-lg"
+                        }`}
+                      >
+                        {/* Image */}
+                        <div className="relative h-48 overflow-hidden bg-gray-100">
+                          <Image
+                            src={achievement.image}
+                            alt={achievement.title}
+                            fill
+                            className="object-cover hover:scale-110 transition-transform duration-500"
+                          />
+                        </div>
+
+                        {/* Content */}
+                        <div className="p-6">
+                          {/* Category badge */}
+                          <div className="mb-3">
+                            <span className="inline-block px-3 py-1 bg-[#631012]/10 text-[#631012] text-xs font-bold rounded-full border border-[#631012]/30">
+                              {achievement.category}
+                            </span>
+                          </div>
+
+                          {/* Title */}
+                          <h3 className="text-lg font-bold text-[#631012] mb-3 line-clamp-2">
+                            {achievement.title}
+                          </h3>
+
+                          {/* Description */}
+                          <p className="text-gray-700 text-sm leading-relaxed line-clamp-2">
+                            {achievement.description}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
-            ))}
+            </div>
           </div>
+
+          {/* Right navigation button */}
+          <button
+            onClick={handleNext}
+            className="flex-shrink-0 w-12 h-12 rounded-full bg-[#631012] text-white font-bold text-xl hover:bg-red-900 transition-all duration-300 flex items-center justify-center shadow-lg hover:shadow-xl transform hover:scale-110"
+          >
+            →
+          </button>
         </div>
-        
-        {/* Scroll indicator */}
-        <div className="flex justify-center mt-4 lg:hidden">
-          <p className="text-gray-500 text-sm">← Scroll horizontally to see more →</p>
+
+        {/* Counter */}
+        <div className="flex justify-center mt-8">
+          <p className="text-gray-600 font-semibold text-sm">
+            <span className="text-[#631012] font-bold">
+              {selectedIndex + 1}
+            </span>{" "}
+            / {baseAchievements.length}
+          </p>
         </div>
       </div>
     </section>
-  )
+  );
 }
 
-export default Achieve
+export default Achieve;
