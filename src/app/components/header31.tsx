@@ -1,10 +1,10 @@
 import React from 'react'
 import './header.css'
 
-function Header() {
+function Page() {
   return (
-   <>
-   <div className='w-full relative '>
+    <>
+     <div className='w-full relative '>
     <div className='bg-white   box   '>
         <div className=' item-1   bg-[#631012]'>
            <div className="max-w-7xl mx-auto flex items-center justify-end gap-6">
@@ -28,18 +28,24 @@ function Header() {
           </div>
         </div>
         </div>
-        <div className='  item-2  absolute z-50 h-45 w-150    bg-[#631012]'>
-            <img src="logo.png" alt="" className='absolute bottom-5 left-20 ' width={150} height={150} />
-        </div>
-        <div className=' item-3    bg-white'>
-          <div className="text-right">
+         <div className=''>
+       <div className='rounded-full h-50 w-50   flex justify-center items-center absolute z-50 left-25'>
+        <img src="logo.png" alt="" className='h-40 w-40 '/>
+       </div>
+       <div className='rounded-tl-full h-40 w-50 bg-[#631012] absolute z-0 left-70 top-2 flex justify-end items-end'>
+        <div className=' clipi h-40 w-50 bg-white absolute bottom-[-20px]  '></div>
+       </div>
+       <div className='w-100 h-50 rounded-b-full bg-[#631012] absolute z-30 left-[-10]'></div>
+    </div>
+        <div className='   bg-white'>
+          <div className=" flex flex-col justify-center items-end mt-10 pr-10">
             <h1 className="text-2xl font-bold text-gray-800 leading-tight">National Institute of Technology, Hamirpur</h1>
             <p className="text-sm text-gray-600 italic">(An institute of national importance)</p>
           </div>
         </div>
        
     </div>
-    <div className=' flex justify-end absolute top-112  '>
+    <div className=' flex justify-end mt-10  '>
           <div className="flex justify-center items-center rounf h-12 w-[75%] rounded-tl-full  bg-[#631012] gap-4 text-white">
              <ul className="flex  items-center gap-8 py-3 text-sm text-white">
             <li><a className="hover:underline hover:text-yellow-300 transition-colors">About NITH</a></li>
@@ -56,8 +62,9 @@ function Header() {
         </div>
     
     </div>
-   </>
+   
+</>
   )
 }
 
-export default Header
+export default Page
