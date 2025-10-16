@@ -8,7 +8,7 @@ function News() {
     {
       id: 1,
       title: "Campus Hosts International Tech Conference",
-      image: "/admin.jpg",
+      image: "/nith.jpg",
       description:
         "Our campus recently hosted an international tech conference bringing together innovators and leaders from around the world. The event featured keynote speeches, panel discussions, and networking opportunities.",
       date: "Oct 30, 2024",
@@ -30,7 +30,7 @@ function News() {
     {
       id: 3,
       title: "Student Achievement in National Olympiad",
-      image: "/window.svg",
+      image: "/robosocnith_cover.jpg",
       description:
         "Our students secured top positions in the National Science Olympiad, showcasing their exceptional talent and dedication to excellence in academics.",
       date: "Oct 25, 2024",
@@ -41,7 +41,7 @@ function News() {
     {
       id: 4,
       title: "Faculty Member Receives National Award",
-      image: "/glob.svg",
+      image: "/award.jpg",
       description:
         "Dr. Sharma received the prestigious National Research Award for her groundbreaking contributions to the field of biotechnology and innovation.",
       date: "Oct 20, 2024",
@@ -91,7 +91,7 @@ function News() {
   const visibleCards = getVisibleCards();
 
   return (
-    <section className="py-16 px-6 bg-white">
+    <section className="py-16 px-6 bg-gray-50">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-4xl font-bold text-[#631012] mb-12 border-b-4 border-[#631012] pb-2 inline-block">
           News
