@@ -91,21 +91,17 @@ function News() {
   const visibleCards = getVisibleCards();
 
   return (
-    <section className="py-16 px-6 bg-gray-50">
+    <section className="pt-14 pb-5 px-6 bg-gray-50">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl font-bold text-[#631012] mb-12 border-b-4 border-[#631012] pb-2 inline-block">
-          News
-        </h2>
-
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-16">
           {/* Be a NITHian Section */}
           <div>
-            <h3 className="text-2xl font-bold text-[#631012] mb-6 border-b-4 border-[#631012] pb-2 inline-block">
-              Be a NITHian
+            <h3 className="text-4xl font-bold text-[#631012] mb-6 border-b-4 border-[#631012] pb-2 inline-block">
+              Admissions
             </h3>
             <div className="space-y-4">
               {/* B.Tech Card */}
-              <div className="border border-gray-200 rounded-lg p-6 bg-white hover:shadow-md transition-shadow">
+              <div className="border border-gray-200 rounded-lg p-6 bg-white  hover:border-[#631012] hover:shadow-md transition-shadow">
                 <h4 className="text-xl font-bold text-[#631012] mb-2">
                   B.Tech
                 </h4>
@@ -113,7 +109,7 @@ function News() {
               </div>
 
               {/* M.Tech, M.Sc, MBA Card */}
-              <div className="border border-gray-200 rounded-lg p-6 bg-white hover:shadow-md transition-shadow">
+              <div className="border border-gray-200 rounded-lg p-6 hover:border-[#631012]  bg-white hover:shadow-md transition-shadow">
                 <h4 className="text-xl font-bold text-[#631012] mb-2">
                   M.Tech, M.Sc, MBA
                 </h4>
@@ -121,7 +117,7 @@ function News() {
               </div>
 
               {/* Ph.D Card */}
-              <div className="border border-gray-200 rounded-lg p-6 bg-white hover:shadow-md transition-shadow">
+              <div className="border border-gray-200 rounded-lg p-6 hover:border-[#631012]  bg-white hover:shadow-md transition-shadow">
                 <h4 className="text-xl font-bold text-[#631012] mb-2">Ph.D</h4>
                 <p className="text-gray-600">Doctorate Program</p>
               </div>
@@ -130,7 +126,7 @@ function News() {
 
           {/* News Section - Featured and Carousel */}
           <div className="lg:col-span-2">
-            <h3 className="text-2xl font-bold text-[#631012] mb-6 border-b-4 border-[#631012] pb-2 inline-block">
+            <h3 className="text-4xl font-bold text-[#631012] mb-6 border-b-4 border-[#631012] pb-2 inline-block">
               Latest News
             </h3>
 

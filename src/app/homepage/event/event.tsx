@@ -77,14 +77,14 @@ export default function Event() {
     setSelectedIndex((prev) => (prev + 1) % baseEvents.length);
   };
 
-  return (
-    <section className="py-16 px-6 bg-white">
+  return (<div  className="flex py-10 bg-gray-50">
+    <section className=" px-6 w-2/3 bg-gray-50">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl font-bold text-[#631012] mb-12 border-b-4 border-[#631012] pb-2 inline-block">
-          Events
+        <h2 className="text-4xl font-bold ml-24 text-[#631012] mt-5 border-b-4 border-[#631012] pb-2 inline-block">
+          Latest Events
         </h2>
 
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-8 py-12 min-h-screen lg:min-h-96">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-8 py-8 min-h-screen lg:min-h-96">
           {/* Left Side - Semi-Circular Positioned Thumbnails */}
           <div className="w-full lg:w-1/4 flex flex-col items-center justify-center relative h-96">
             <div className="relative w-full h-full">
@@ -165,7 +165,7 @@ export default function Event() {
           <div className="w-full lg:w-1/2 flex items-center justify-center px-4">
             <div
               key={selectedEvent.id}
-              className="bg-gradient-to-br from-white to-gray-50 rounded-3xl border-2 border-[#631012]/30 p-10 shadow-xl max-w-lg w-full"
+              className="bg-gradient-to-br from-white to-gray-50 rounded-3xl border-2 border-[#631012]/30 p-10  shadow-xl max-w-lg w-full"
               style={{
                 animation: shouldAnimate
                   ? "fadeInUp 0.5s ease-out forwards"
@@ -202,7 +202,7 @@ export default function Event() {
               </div>
 
               {/* Description */}
-              <p className="text-gray-700 leading-relaxed mb-8 text-sm transition-all duration-500">
+              <p className="text-gray-700 leading-relaxed mb-8 text-sm max-h-[70px] transition-all duration-500">
                 {selectedEvent.description}
               </p>
 
@@ -290,5 +290,50 @@ export default function Event() {
         `}</style>
       </div>
     </section>
+    <section className=" px-6 w-1/3 bg-gray-50">
+      <div className="max-w-7xl mx-auto">
+        <h2 className="text-4xl font-bold ml-24 text-[#631012] mt-5 border-b-4 border-[#631012] pb-2 inline-block">
+          Upcoming Events
+        </h2>
+        <div className="flex flex-col items-start justify-start gap-6 my-8 max-h-[440px] overflow-auto ">
+          {baseEvents.map((event, idx) => (
+            <div
+              key={event.id}
+              className={`w-full p-4 rounded-2xl border-2 ${
+                idx === selectedIndex
+                  ? "border-[#631012] bg-[#631012]/10 shadow-lg"  
+                  : "border-gray-200 bg-white hover:border-[#631012] hover:shadow-md"
+              } transition-all duration-300 cursor-pointer`}
+              onClick={() => setSelectedIndex(idx)}
+            >
+              <h3
+                className={`text-xl font-bold mb-2 ${
+                  idx === selectedIndex ? "text-[#631012]" : "text-gray-800"
+                }`}
+              >
+                {event.title}
+              </h3>
+              <p className="text-gray-600 text-sm mb-4 line-clamp-2">
+                {event.description}
+              </p>
+              <div className="text-gray-500 text-xs flex items-center gap-2">
+                <svg
+                  className="w-4 h-4 text-[#631012]"
+
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path d="M5.5 13a3.5 3.5 0 01-.369-6.98 4 4 0 117.753-1.3A4.5 4.5 0 1113.5 13H11V9.413l1.293 1.293a1 1 0 001.414-1.414l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13H5.5z" />
+                </svg>
+                <span>{event.date}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      
+    </section>
+    </div>
+
   );
 }
