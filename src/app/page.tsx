@@ -1,4 +1,4 @@
-import Header from "./components/header";
+import Header2 from "./components/header2";
 import Aboutus from "./homepage/aboutus/aboutus";
 import Footer from "./components/footer"; 
 import Event from "./homepage/event/event";
@@ -14,7 +14,7 @@ export default function Home() {
     <div className="min-h-screen">
       {/* Header and Hero section */}
       <div className="h-screen flex flex-col">
-        <Header />
+        <Header2 />
         <div className="flex-1">
           <Hero />
         </div>
