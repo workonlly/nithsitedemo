@@ -12,16 +12,14 @@ const data = [
 ];
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
-  visible: (i = 1) => ({
+  hidden: { 
+    opacity: 0, 
+    y: 40 
+  },
+  visible: {
     opacity: 1,
     y: 0,
-    transition: {
-      delay: i * 0.2,
-      duration: 0.6,
-      ease: "easeOut",
-    },
-  }),
+  },
 };
 
 function Aboutus() {
@@ -39,6 +37,7 @@ function Aboutus() {
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeUp}
+            transition={{ duration: 0.6, ease: "easeOut" }}
           >
             <motion.h2
               className="text-4xl font-bold text-[#631012] mb-6 inline-block relative"
@@ -70,13 +69,14 @@ function Aboutus() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
+            transition={{ staggerChildren: 0.2 }}
           >
             {data.map((p, index) => (
               <motion.div
                 key={index}
                 className="bg-white rounded-xl p-6 text-center shadow-md hover:shadow-xl transition-shadow duration-300 border border-gray-100 hover:-translate-y-2"
-                custom={index * 0.2}
                 variants={fadeUp}
+                transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.1 }}
                 whileHover={{
                   scale: 1.05,
                   transition: { type: "spring", stiffness: 200 },
