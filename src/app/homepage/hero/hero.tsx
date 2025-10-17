@@ -1,14 +1,17 @@
 import React from "react";
+import Image from "next/image";
 
 function Hero() {
   return (
     <div className="relative w-full h-full overflow-hidden">
       {/* Background image */}
       <div className="absolute inset-0">
-        <img
-          src="admin.jpg"
+        <Image
+          src="/admin.jpg"
           alt="NIT Hamirpur Campus"
-          className="w-full h-full object-cover"
+          fill
+          className="object-cover"
+          priority
         />
       </div>
 

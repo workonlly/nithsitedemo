@@ -1,13 +1,14 @@
 import React from 'react'
+import Image from 'next/image'
 
 export default function Director() {
   return (
     <section className="py-16 px-6 bg-gray-200">
       <div className="max-w-7xl mx-auto">
-        {/* Director's Message heading */}
+        {/* Director&apos;s Message heading */}
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-[#631012] border-b-4 border-[#631012] pb-2 inline-block">
-            Director's Message
+            Director&apos;s Message
           </h2>
         </div>
         
@@ -16,9 +17,11 @@ export default function Director() {
             {/* Left side - Director photo */}
             <div className="flex justify-center">
               <div className="w-72 h-80 rounded-lg overflow-hidden shadow-lg bg-white">
-                <img 
+                <Image 
                   src="/direct.jpg" 
                   alt="Dr. H.M. Suryavanshi, Director NIT Hamirpur" 
+                  width={288}
+                  height={320}
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -27,7 +30,7 @@ export default function Director() {
             {/* Right side - Quote and attribution */}
             <div className="space-y-6 flex flex-col justify-center">
               <blockquote className="text-lg leading-relaxed text-gray-800 text-left">
-                "NIT Hamirpur is a hub of innovation and learning, where we are committed to fostering a culture of excellence. Our focus is on nurturing the next generation of leaders and problem-solvers who can make a positive impact on society."
+                &ldquo;NIT Hamirpur is a hub of innovation and learning, where we are committed to fostering a culture of excellence. Our focus is on nurturing the next generation of leaders and problem-solvers who can make a positive impact on society.&rdquo;
               </blockquote>
               
               {/* Divider line */}
