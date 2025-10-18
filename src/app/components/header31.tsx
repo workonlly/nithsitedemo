@@ -33,7 +33,7 @@ function Page() {
        <div className='rounded-full h-35 w-31   flex justify-center items-center absolute z-50 left-4 top-0'>
         <img src="l.png" alt="" className='h-25 w-25 '/>
        </div>
-       <div className=' clipi h-100 w-300 bg-[#631012] absolute z-0 left-[-71] top-1 flex justify-end items-end'>
+       <div className=' clipi h-100 w-300 bg-[#631012] absolute z-0 left-[-715] top-1 flex justify-end items-end'>
         <div className=' clipi h-41 w-1 bg-[#631012]   '></div>
        </div>
        <div className='w-40 h-28.5 rounded-b-full bg-[#631012] absolute z-30 left-[0] '></div>
