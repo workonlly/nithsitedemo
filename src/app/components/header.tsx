@@ -29,7 +29,7 @@ function Header() {
         </div>
         </div>
         <div className='  item-2  absolute z-50 h-45 w-150    bg-[#631012]'>
-            <img src="logo.png" alt="" className='absolute bottom-5 left-20 ' width={150} height={150} />
+            <img src="logo.png" alt="" className='absolute bottom-5 left-20 ' width={100} height={100} />
         </div>
         <div className=' item-3    bg-white'>
           <div className="text-right">
