@@ -31,25 +31,25 @@ function Page() {
 
          <div className=''>
        <div className='rounded-full h-35 w-31   flex justify-center items-center absolute z-50 left-4 top-0'>
-        <img src="l.png" alt="" className='h-30 w-30 '/>
+        <img src="l.png" alt="" className='h-25 w-25 '/>
        </div>
-       <div className=' clipi h-100 w-300 bg-[#631012] absolute z-0 left-[-650] top-1 flex justify-end items-end'>
+       <div className=' clipi h-100 w-300 bg-[#631012] absolute z-0 left-[-71] top-1 flex justify-end items-end'>
         <div className=' clipi h-41 w-1 bg-[#631012]   '></div>
        </div>
-       <div className='w-40 h-29 rounded-b-full bg-[#631012] absolute z-30 left-[0] '></div>
+       <div className='w-40 h-28.5 rounded-b-full bg-[#631012] absolute z-30 left-[0] '></div>
     </div>
 
 
         <div className='   bg-white'>
           <div className=" flex flex-col justify-center items-end ">
             <h1 className="text-2xl font-bold text-gray-800 leading-tight py-4 mr-4">National Institute of Technology, Hamirpur</h1>
-            <p className="text-sm text-gray-600 italic mr-4 -mt-2">(An institute of national importance)</p>
+            <p className="text-sm text-gray-600 italic mr-4 -mt-4">(An institute of national importance)</p>
           </div>
         </div>
        
     </div>
-    <div className=' flex justify-end mb-0.5 -mt-6  '>
-          <div className="flex justify-center items-center rounf h-10 w-[80%] rounded-tl-full  bg-[#631012] gap-4 text-white">
+    <div className=' flex justify-end mb-0.5 -mt-7 '>
+          <div className="flex justify-center items-center rounf h-10 w-[85%] rounded-tl-full  bg-[#631012] gap-4 text-white">
              <ul className="flex  items-center gap-8 py-0 text-sm text-white">
             <li><a className="hover:underline hover:text-yellow-300 transition-colors">About NITH</a></li>
             <li><a className="hover:underline hover:text-yellow-300 transition-colors">Authorities</a></li>
