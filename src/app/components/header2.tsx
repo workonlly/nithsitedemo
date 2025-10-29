@@ -39,7 +39,7 @@ function Header2() {
         <div className="relative z-10 max-w-7xl mx-auto px-6 py-4 flex items-center justify-between h-full">
           {/* Logo */}
           <div className="flex items-center z-20">
-            <img src="/logo.png" alt="NITH Logo" className="h-16 w-16 rounded-full bg-white shadow-lg ring-2 ring-white" />
+            <img src="/logo.png" alt="NITH Logo" className="h-10 w-10 rounded-full bg-white shadow-lg ring-2 ring-white" />
           </div>
 
           {/* Institute name - positioned to the right */}
@@ -53,7 +53,7 @@ function Header2() {
       {/* Bottom navigation bar */}
       <nav className="bg-[#631012] text-white">
         <div className="max-w-7xl mx-auto px-6">
-          <ul className="flex items-center gap-8 py-3 text-sm">
+          <ul className="flex items-center gap-8  text-sm">
             <li><a className="hover:underline transition-colors">About NITH</a></li>
             <li><a className="hover:underline transition-colors">Authorities</a></li>
             <li><a className="hover:underline transition-colors">Administration</a></li>
